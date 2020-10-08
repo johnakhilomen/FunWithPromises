@@ -1,0 +1,19 @@
+{
+  "name": "funwithpromises",
+  "version": "1.0.0",
+  "description": "Just a quick fun with promises",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnakhilomen/FunWithPromises.git"
+  },
+  "author": "John Akhilomen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnakhilomen/FunWithPromises/issues"
+  },
+  "homepage": "https://github.com/johnakhilomen/FunWithPromises#readme"
+}
