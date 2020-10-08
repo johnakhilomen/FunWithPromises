@@ -108,3 +108,11 @@ const getFrogs = new Promise((resolve) => {
     result:
       [{"id":"mlo29naz","name":"larry","born":"2016-02-22"},{"id":"lp2qmsmw","name":"sally","born":"2018-09-13"},{"id":"aom39d","name":"john","born":"2017-08-11"},{"id":"20fja93","name":"chris","born":"2017-01-30"}]
   */
+
+
+  async function usingAsyncWait()
+  {
+    const sum = await sum(a, b);
+    const mult = await multiply(sum, b);
+    console.log(mult);
+  }
