@@ -18,7 +18,7 @@ let printHelloWorld = () => {
 
 let sum = (a, b) => {
     return new Promise((resolve, reject)=>{
-        if(!a && !b)
+        if(!a || !b)  
         {
             reject("You need args a and b");
             return;
@@ -30,7 +30,7 @@ let sum = (a, b) => {
 
 let multiply = (a, b) => {
     return new Promise((resolve, reject)=>{
-        if(!a && !b)
+        if(!a || !b)  
         {
             reject("You need args a and b");
             return;
