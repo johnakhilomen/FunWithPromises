@@ -112,7 +112,13 @@ const getFrogs = new Promise((resolve) => {
 
   async function usingAsyncWait()
   {
+      try
+      {
     const sum = await sum(a, b);
     const mult = await multiply(sum, b);
     console.log(mult);
+      }
+      catch(err){
+          console.log(err)
+      }
   }
