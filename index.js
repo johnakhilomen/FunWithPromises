@@ -39,7 +39,7 @@ let multiply = (a, b) => {
     });
     
 }
-
+// Consuming the promise object returned by the sum function
 let a = 25, b = 65;
 //Chained promises
 sum(a, b)
@@ -110,6 +110,7 @@ const getFrogs = new Promise((resolve) => {
   */
 
 
+// Consuming the promise object returned by the sum function
   async function usingAsyncWait()
   {
       try
