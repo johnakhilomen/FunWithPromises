@@ -42,19 +42,37 @@ let multiply = (a, b) => {
 // Consuming the promise object returned by the sum function
 let a = 25, b = 65;
 //Chained promises
+// sum(a, b)
+// .then(result=>{
+//    return result
+// })
+// .then(multResult=>{
+//     console.log(multResult);
+//     return multiply(multResult, 10);
+// })
+// .then(multiplied10=>{
+//     console.log("multiplying the result with 10 " + multiplied10);
+// })
+// .catch(err=>{
+//     console.log(err);
+// });
+
+sum(a)
+.catch(err => {
+    console.log('Caught:', err); // Caught: Error occurred!
+    return "ERRCODE 42";
+})
+.then(result => {
+    console.log(result); 
+});
+
 sum(a, b)
-.then(result=>{
-   return result
+.catch(err => {
+    console.log('Caught:', err.message); // Caught: Error occurred!
+    return 42;
 })
-.then(multResult=>{
-    console.log(multResult);
-    return multiply(multResult, 10);
-})
-.then(multiplied10=>{
-    console.log("multiplying the result with 10 " + multiplied10);
-})
-.catch(err=>{
-    console.log(err);
+.then(result => {
+    console.log(result); 
 });
 
 
@@ -123,3 +141,58 @@ const getFrogs = new Promise((resolve) => {
           console.log(err)
       }
   }
+
+// Syncrhonous operation with Promises  
+let promise1 = Promise.resolve(1);
+let promise2 = Promise.resolve(2);
+let promise3 = new Promise((resolve, reject) => {
+    setTimeout(() => resolve(3), 1000);
+});
+
+Promise.all([promise1, promise2, promise3])
+.then(result => console.log(result)) // [1, 2, 3]
+.catch(err => console.log(err));
+
+
+
+// Prototypes and Inheritance
+// Define a Vehicle constructor
+function Vehicle(name) {
+  this.name = name;
+}
+
+// Add methods to Vehicle's prototype
+Vehicle.prototype.start = function() {
+  return this.name + ' started';
+}
+
+Vehicle.prototype.stop = function() {
+  return this.name + ' stopped';
+}
+
+// Define a Car constructor
+function Car(name, isElectric) {
+  // Call the parent constructor (Vehicle) to get its properties
+  Vehicle.call(this, name);
+  this.isElectric = isElectric;
+}
+
+// Set up inheritance: Make Car "subclass" of Vehicle
+Car.prototype = Object.create(Vehicle.prototype);
+
+// Since we overwrote Car's prototype, let's set the constructor property appropriately
+Car.prototype.constructor = Car;
+
+// Now we can add methods to Car's prototype
+Car.prototype.displayType = function() {
+  return this.isElectric ? this.name + ' is an electric car' : this.name + ' is a regular car';
+}
+
+// Now we can create instances
+let tesla = new Car('Tesla', true);
+console.log(tesla.start()); // Logs: "Tesla started"
+console.log(tesla.displayType()); // Logs: "Tesla is an electric car"
+
+let corolla = new Car('Corolla', false);
+console.log(corolla.stop()); // Logs: "Corolla stopped"
+console.log(corolla.displayType()); // Logs: "Corolla is a regular car"
