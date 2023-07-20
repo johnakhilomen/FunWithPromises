@@ -12,6 +12,44 @@ You are in a restaurant with many other people. You order your food. Other peopl
 
 */
 
+const data = {
+  "User": [
+    {
+      "fullname": "Joe",
+      "addresses" : ["Address1", "Address2", "Address3"]
+    },
+    {
+      "fullname": "Bob",
+      "addresses" : ["Address1", "Address3"]
+    },
+    {
+      "fullname": "Kate",
+      "addresses" : ["Address1", "Address2"]
+    },
+  ]
+}
+
+const addressesToCheck = ["Address1", "Address2", "Address3"];
+
+data.User.forEach(user => {
+  const hasAddresses = addressesToCheck.some(address => user.addresses.includes(address));
+  
+  console.log(`${user.fullname} has at least one of the addresses: ${hasAddresses}`);
+});
+
+
+//
+
+const namesToCheck = ["Joe", "Kate"];
+
+const hasNames = data.User.some(user => namesToCheck.includes(user.fullname));
+
+console.log(`Contains Joe or Kate: ${hasNames}`);
+
+//
+
+
+
 let printHelloWorld = () => {
     return "Hello World";
 }
@@ -196,3 +234,52 @@ console.log(tesla.displayType()); // Logs: "Tesla is an electric car"
 let corolla = new Car('Corolla', false);
 console.log(corolla.stop()); // Logs: "Corolla stopped"
 console.log(corolla.displayType()); // Logs: "Corolla is a regular car"
+
+
+
+
+// function validate(user) {
+//   if (!user.fullname) {
+//     console.log("fullname is required")
+//   }
+//   else if (!user.address) {
+//     console.log("fullname is required")
+//   }
+//   else if (user.fullname.length < 5)
+//   {
+//     console.log("fullname is invalid")
+//   }
+//   else if (user.email.indexOf('@')!== -1) {
+//     console.log("Email is invalid")
+//   }
+//   else 
+//   {
+//     console.log("Validated!")
+//   }
+// }
+
+// if (condition) then {action} else {action} === condition && (then) {action} || (else) {action}
+function validate(user) {
+  let error = "";
+  !user.fullname && (error+="Fullname is required" + "\n") ||
+  !user.address && (error+="Address is required" + "\n")  ||
+  ( !user?.email || user?.email?.indexOf('@') === -1 ) && (error+="Email is empty or invalid" + "\n") ||
+  user?.fullname?.length < 5 && (error+="Fullname is invalid" + "\n" )
+ return error || "Validated!"
+  // || console.log("Validated!");
+}
+
+console.log(validate({
+  fullname: 'Jon Doe',
+  address: 'Address 101',
+  email: "email@email.com"
+}))
+
+// if (x === 1) console.log('active') 
+// else console.log('inactive')
+function ex2(x) {
+  let resp = x+":"
+  x === 1 && (resp+='active') || ( resp+='inactive' );
+  return resp
+}
+console.log(ex2(9))
